@@ -24,7 +24,7 @@ public class OrderService {
     // 2.1 url 地址
     // String url = "http://localhost:8081/user/" + order.getUserId();
 
-    String url = "http://user-service/user/" + order.getUserId();
+    String url = "http://userservice/user/" + order.getUserId();
 
     // 2.2 发起调用
     User user = restTemplate.getForObject(url, User.class);
