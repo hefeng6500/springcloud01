@@ -8,6 +8,9 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      server-addr: localhost:8848
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
@@ -23,8 +26,9 @@ userservice: # 给某个微服务配置负载均衡规则，这里是userservice
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则
 ribbon:
   eager-load:
-    enabled: true
-    clients: userservice
+    enabled: true # 开启饥饿加载
+    clients: # 指定饥饿加载的服务名称
+      - userservice
 eureka:
   client:
     service-url:
